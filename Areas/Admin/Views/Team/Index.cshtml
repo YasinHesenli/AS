@@ -1,0 +1,84 @@
+﻿@using Lumia.Models;
+@model List<Team>
+@{
+    int count = 0;
+}
+
+<div class="content-wrapper">
+    <div class="row">
+
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Team Table</h4>
+                    <a asp-controller="team" asp-action="create" class="btn btn-success">Create</a>
+
+
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        No
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Position Name
+                                    </th>
+                                    <th>
+                                        Title
+                                    </th>
+                                    <th>
+                                        Image
+                                    </th>
+                                    <th>
+                                        Settings
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+
+                                        <td>
+                                            @count
+                                        </td>
+                                       
+                                        <td>
+                                            @item.Name
+                                        </td>
+                                        
+                                        <td>
+                                            @item.Position.Name
+                                        <td>
+                                           @item.Title
+                                        </td>
+
+                                        <td>
+                                            <img src="~/assets/img/@item.Image" />
+                                        </td>
+
+
+                                        <td>
+                                            <a asp-controller="team" asp-action="update" asp-route-id="@item.Id" class="btn btn-warning"> <i class="mdi mdi-pencil"></i></a>
+                                            <a asp-controller="team" asp-action="delete" asp-route-id="@item.Id" class="btn btn-danger btn-item-deletee ">  <i class="mdi mdi-delete "></i></a>
+                                            <a class="btn btn-primary"><i class="mdi mdi-open-in-new"></i></a>
+
+
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
